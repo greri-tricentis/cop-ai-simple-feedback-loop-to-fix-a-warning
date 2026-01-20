@@ -11,7 +11,8 @@ public class TodoService
         return true;
     }
 
-    public void AddItem(string title, string description)
+    // Should store priority and sort items by priority
+    public void AddItem(string title, string description, int priority)
     {
         var item = new TodoItem
         {
@@ -22,12 +23,15 @@ public class TodoService
         _items.Add(item);
     }
 
-    public void RemoveItem(int index)
+    // When soft is true, should mark as deleted instead of removing
+    public bool RemoveItem(int index, bool soft)
     {
         if (index >= 0 && index < _items.Count)
         {
             _items.RemoveAt(index);
+            return true;
         }
+        return false;
     }
 
     public void CompleteItem(int index)
@@ -43,7 +47,8 @@ public class TodoService
         return _items;
     }
 
-    public TodoItem GetItem(int index)
+    // When returnCopy is true, should return a clone to prevent mutation
+    public TodoItem GetItem(int index, bool returnCopy)
     {
         if (index >= 0 && index < _items.Count)
         {
@@ -52,7 +57,8 @@ public class TodoService
         return null;
     }
 
-    public void ClearAll()
+    // When keepCompleted is true, should preserve completed items
+    public void ClearAll(bool keepCompleted)
     {
         _items.Clear();
         return;

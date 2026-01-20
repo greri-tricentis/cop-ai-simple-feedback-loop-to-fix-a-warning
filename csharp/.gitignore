@@ -1,5 +1,20 @@
+# Build output
 bin
 obj
+
+# Visual Studio
 *.user
 *.suo
 .vs
+
+# JetBrains (Rider, WebStorm)
+.idea
+
+# VS Code
+.vscode
+
+# macOS
+.DS_Store
+
+# Test output
+TestResults

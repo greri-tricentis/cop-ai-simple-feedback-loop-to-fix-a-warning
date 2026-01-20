@@ -25,7 +25,7 @@ class Program
                     var title = Console.ReadLine();
                     Console.Write("Description: ");
                     var description = Console.ReadLine();
-                    service.AddItem(title, description);
+                    service.AddItem(title, description, 1);
                     Console.WriteLine("Item added!");
                     break;
 
@@ -57,13 +57,13 @@ class Program
                     Console.Write("Item number: ");
                     if (int.TryParse(Console.ReadLine(), out int removeIndex))
                     {
-                        service.RemoveItem(removeIndex - 1);
+                        service.RemoveItem(removeIndex - 1, false);
                         Console.WriteLine("Item removed!");
                     }
                     break;
 
                 case "clear":
-                    service.ClearAll();
+                    service.ClearAll(false);
                     Console.WriteLine("All items cleared!");
                     break;
 
