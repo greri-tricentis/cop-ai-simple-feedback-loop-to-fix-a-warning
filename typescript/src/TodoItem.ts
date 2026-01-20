@@ -1,0 +1,9 @@
+export interface TodoItem {
+  id: number;
+  title: string;
+  description: string;
+  isCompleted: boolean;
+  isDeleted?: boolean;
+  priority?: number;
+  createdAt: Date;
+}
