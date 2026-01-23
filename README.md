@@ -1,20 +1,30 @@
-# AI Feedback Loop Practice
+# Healing With Grounded Signals 
 
-Practice projects for creating feedback loops with AI to fix compiler/linter warnings.
+Practice building AI systems that reduce pain by translating human intent into action, verified through continuous ground-truth feedback loops.
 
 ## Projects
+
+These projects are exercises for practicing the setup of AI feedback loops. 
 
 - **[csharp/](csharp/)** - C# TodoApp with intentional warnings
 - **[typescript/](typescript/)** - React + TypeScript + Vite with intentional warnings
 
-## Purpose
+## What you should do
 
-These projects are exercises for practicing AI feedback loops. The intent is to:
+Step 1: Fork the repository, so that you can create a PR
 
-1. Give AI the ability to see compiler/linter warnings
-2. Define a workflow where AI fixes the warnings
-3. Provide a way to verify that warnings were fixed (tests pass, build succeeds)
-4. Integrate the code via pull request
+Step 2: Guide an agent to:
+
+1. Take the pain signal (warning)
+2. Follow a guided intervention protocol (changes code)
+3. Run grounding checks/feedback (build/test/lint)
+4. Produce an auditable change set (PR)
+5. Repeat
+
+## Constraints
+
+- Fix one warning at a time
+- The agent does the heavy lifting
 
 ## Going Meta
 

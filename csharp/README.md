@@ -1,15 +1,21 @@
 # TodoApp
 
-A simple todo application in C#.
+A simple C# todo application for practicing AI feedback loops. Learn to reduce pain by translating human intent into action, verified through continuous ground-truth feedback loops.
 
-## Purpose
+## What you should do
 
-This project is an exercise for practicing AI feedback loops. The intent is to:
+Guide an agent to:
 
-1. Give AI the ability to see compiler warnings
-2. Define a workflow where AI fixes the warnings
-3. Provide a way to verify that warnings were fixed (tests pass, build succeeds)
-4. Integrate the code via pull request
+1. Take the pain signal (warning)
+2. Follow a guided intervention protocol (changes code)
+3. Run grounding checks/feedback (build/test)
+4. Produce an auditable change set (PR)
+5. Repeat
+
+## Constraints
+
+- Fix one warning at a time
+- The agent does the heavy lifting
 
 ## Going Meta
 
