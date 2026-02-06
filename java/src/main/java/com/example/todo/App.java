@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 public class App {
 
-    // Intentional: unused private field
     private static String VERSION = "1.0.0";
 
     public static void main(String[] args) {
@@ -14,7 +13,6 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
-        // Intentional: unused local variable
         int commandCount = 0;
 
         System.out.println("=== Simple Todo App ===");

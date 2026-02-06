@@ -3,6 +3,8 @@ package com.example.todo;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TodoItem implements Serializable {
 
@@ -11,17 +13,15 @@ public class TodoItem implements Serializable {
     private boolean isCompleted;
     private LocalDateTime createdAt;
 
-    // Intentional: unused private field
     private int internalId = 0;
-
-    // Intentional: unused import (Date) - field uses LocalDateTime instead
-    private Date legacyDate;
+    private Map metadata = new HashMap();
 
     public TodoItem(String title, String description) {
         this.title = title;
         this.description = description;
         this.isCompleted = false;
         this.createdAt = LocalDateTime.now();
+        this.metadata.put("legacyDate", new Date("Jan 1, 2024"));
     }
 
     public String getTitle() {
