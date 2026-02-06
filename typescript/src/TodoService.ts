@@ -5,7 +5,6 @@ export class TodoService {
   private nextId = 1;
   private serviceName = 'TodoService';
   private maxItems = 100;
-  private version = '1.0.0';
 
   addItem(title: string, description: string, priority: number): TodoItem {
     const item: TodoItem = {
