@@ -25,7 +25,20 @@ Step 2: Guide an agent to:
 ## Constraints
 
 - Fix one warning at a time
+- One warning per PR
 - The agent does the heavy lifting
+- The agent does not occupy your main workspace
+    - runs somehow in the background
+    - does not make changes in your current branch, where you are working on something else
+
+## Possible Solutions
+
+- Process file
+- Slash command/Skill
+- Wrapper script
+- Prove it hook
+- Cli agent
+- Git worktree
 
 ## Going Meta
 
