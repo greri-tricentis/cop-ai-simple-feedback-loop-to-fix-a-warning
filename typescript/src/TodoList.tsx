@@ -30,10 +30,11 @@ export function TodoList({ maxItems }: TodoListProps) {
     }
   };
 
-  // Should show confirmation with item title before completing
   const handleComplete = (id: number, itemTitle: string) => {
-    todoService.completeItem(id);
-    refreshItems();
+    if (window.confirm(`Mark "${itemTitle}" as completed?`)) {
+      todoService.completeItem(id);
+      refreshItems();
+    }
   };
 
   const handleRemove = (id: number) => {
