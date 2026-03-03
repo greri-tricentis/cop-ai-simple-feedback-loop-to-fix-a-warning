@@ -3,9 +3,6 @@ import type { TodoItem } from './TodoItem';
 export class TodoService {
   private items: TodoItem[] = [];
   private nextId = 1;
-  private serviceName = 'TodoService';
-  private maxItems = 100;
-  private version = '1.0.0';
 
   addItem(title: string, description: string, priority: number): TodoItem {
     const item: TodoItem = {
@@ -13,20 +10,23 @@ export class TodoService {
       title,
       description,
       isCompleted: false,
+      priority,
       createdAt: new Date(),
     };
     this.items.push(item);
     return item;
   }
 
-  // When soft is true, should mark as deleted instead of removing
   removeItem(id: number, soft: boolean): boolean {
     const index = this.items.findIndex(item => item.id === id);
-    if (index !== -1) {
+    if (index === -1) return false;
+
+    if (soft) {
+      this.items[index].isDeleted = true;
+    } else {
       this.items.splice(index, 1);
-      return true;
     }
-    return false;
+    return true;
   }
 
   completeItem(id: number): void {
@@ -36,19 +36,20 @@ export class TodoService {
     }
   }
 
-  // When returnCopy is true, should return a clone to prevent mutation
   getItem(id: number, returnCopy: boolean): TodoItem | undefined {
     const foundItem = this.items.find(item => item.id === id);
-    return foundItem;
+    if (!foundItem) return undefined;
+    return returnCopy ? { ...foundItem } : foundItem;
   }
 
   getAllItems(): TodoItem[] {
     return [...this.items];
   }
 
-  // Should filter out completed items when keepCompleted is false
   clearAll(keepCompleted: boolean): void {
-    this.items = [];
+    this.items = keepCompleted
+      ? this.items.filter(item => item.isCompleted)
+      : [];
   }
 }
 
