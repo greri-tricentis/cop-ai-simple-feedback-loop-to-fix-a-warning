@@ -1,19 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { TodoItem } from './TodoItem';
 import { todoService } from './TodoService';
 
 export function TodoList() {
-  const [items, setItems] = useState<TodoItem[]>([]);
+  const [items, setItems] = useState<TodoItem[]>(() => todoService.getAllItems());
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   const refreshItems = () => {
     setItems(todoService.getAllItems());
   };
-
-  useEffect(() => {
-    refreshItems();
-  }, []);
 
   const handleAdd = (event: React.FormEvent) => {
     event.preventDefault();
@@ -25,7 +21,7 @@ export function TodoList() {
     }
   };
 
-  const handleComplete = (id: number, _itemTitle: string) => {
+  const handleComplete = (id: number) => {
     todoService.completeItem(id);
     refreshItems();
   };
@@ -64,7 +60,7 @@ export function TodoList() {
           <li key={item.id} className={item.isCompleted ? 'completed' : ''}>
             <span>{item.title}</span>
             <span>{formatDate(item.createdAt)}</span>
-            <button onClick={() => handleComplete(item.id, item.title)}>Complete</button>
+            <button onClick={() => handleComplete(item.id)}>Complete</button>
             <button onClick={() => handleRemove(item.id)}>Remove</button>
           </li>
         ))}
