@@ -3,7 +3,7 @@ import './App.css'
 
 function App() {
   return (
-    <TodoList maxItems={100} />
+    <TodoList />
   )
 }
 

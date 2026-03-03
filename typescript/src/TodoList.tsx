@@ -2,15 +2,10 @@ import { useState, useEffect } from 'react';
 import type { TodoItem } from './TodoItem';
 import { todoService } from './TodoService';
 
-interface TodoListProps {
-  maxItems: number;
-}
-
-export function TodoList({ maxItems }: TodoListProps) {
+export function TodoList() {
   const [items, setItems] = useState<TodoItem[]>([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const unusedState = useState(false);
 
   const refreshItems = () => {
     setItems(todoService.getAllItems());
@@ -30,8 +25,7 @@ export function TodoList({ maxItems }: TodoListProps) {
     }
   };
 
-  // Should show confirmation with item title before completing
-  const handleComplete = (id: number, itemTitle: string) => {
+  const handleComplete = (id: number, _itemTitle: string) => {
     todoService.completeItem(id);
     refreshItems();
   };
