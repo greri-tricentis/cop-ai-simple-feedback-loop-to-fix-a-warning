@@ -36,10 +36,12 @@ export class TodoService {
     }
   }
 
-  // When returnCopy is true, should return a clone to prevent mutation
   getItem(id: number, returnCopy: boolean): TodoItem | undefined {
     const foundItem = this.items.find(item => item.id === id);
-    return foundItem;
+    if (!foundItem) {
+      return undefined;
+    }
+    return returnCopy ? { ...foundItem } : foundItem;
   }
 
   getAllItems(): TodoItem[] {
