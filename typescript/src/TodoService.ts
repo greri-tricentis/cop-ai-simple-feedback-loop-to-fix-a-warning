@@ -13,6 +13,7 @@ export class TodoService {
       title,
       description,
       isCompleted: false,
+      priority,
       createdAt: new Date(),
     };
     this.items.push(item);
