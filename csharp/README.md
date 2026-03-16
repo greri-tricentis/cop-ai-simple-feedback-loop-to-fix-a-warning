@@ -10,6 +10,10 @@ A simple C# todo application for practicing AI feedback loops. Practice building
 
 ### Step 2: Guide an agent through all the steps to fix a single warning and create the PR
 
+Constraints:
+- The Agent does everything, and you don't get to write code or run tools.
+- All you do is prompting.
+
 Make sure you have the agent perform all the steps:
 - Run the tests to validate nothing broke
 - Prove that the warning was fixed
@@ -35,10 +39,12 @@ Keep doing this until you are happy with your process.
 
 ### Step 4: Design a harness that fixes warnings in the background
 
+Constraints:
+- The Agent does not occupy your main workspace, so you can still work on the next feature in parallel.
+
 The harness should be able to find out what warnings there are to fix.
 The harness should use your process file and fix one warning at a time, resulting in PRs that fix one warning each.
 The harness should avoid fixing the same warning twice.
-The harness should not occupy your main workspace, so you should be able to work on something else in the meantime.
 Use `git worktree` to do that.
 
 ### Step 5: Refine your harness
