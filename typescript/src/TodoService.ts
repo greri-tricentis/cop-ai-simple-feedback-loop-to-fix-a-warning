@@ -48,7 +48,7 @@ export class TodoService {
 
   // Should filter out completed items when keepCompleted is false
   clearAll(keepCompleted: boolean): void {
-    this.items = [];
+    this.items = keepCompleted ? this.items.filter(item => item.isCompleted) : [];
   }
 }
 
