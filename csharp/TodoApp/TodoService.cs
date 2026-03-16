@@ -62,6 +62,5 @@ public class TodoService
     {
         _items.Clear();
         return;
-        _items = new List<TodoItem>();
     }
 }
