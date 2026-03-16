@@ -45,7 +45,8 @@ public class TodoServiceTests
         // This test verifies the API contract - returnCopy must be accepted
         var item = service.GetItem(0, false);
 
-        Assert.Equal("Task", item.Title);
+        Assert.NotNull(item);
+        Assert.Equal("Task", item!.Title);
     }
 
     [Fact]

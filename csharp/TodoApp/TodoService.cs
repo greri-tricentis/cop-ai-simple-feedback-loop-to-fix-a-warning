@@ -4,7 +4,7 @@ public class TodoService
 {
     private List<TodoItem> _items = new List<TodoItem>();
 
-    public event EventHandler ItemAdded;
+    public event EventHandler? ItemAdded;
 
     public async Task<bool> SaveAsync()
     {
@@ -21,6 +21,7 @@ public class TodoService
             CreatedAt = DateTime.Now
         };
         _items.Add(item);
+        ItemAdded?.Invoke(this, EventArgs.Empty);
     }
 
     // When soft is true, should mark as deleted instead of removing
@@ -48,7 +49,7 @@ public class TodoService
     }
 
     // When returnCopy is true, should return a clone to prevent mutation
-    public TodoItem GetItem(int index, bool returnCopy)
+    public TodoItem? GetItem(int index, bool returnCopy)
     {
         if (index >= 0 && index < _items.Count)
         {

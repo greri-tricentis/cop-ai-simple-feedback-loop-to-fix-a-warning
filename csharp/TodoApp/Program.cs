@@ -2,8 +2,6 @@ namespace TodoApp;
 
 class Program
 {
-    private static string _version = "1.0.0";
-
     static void Main(string[] args)
     {
         var service = new TodoService();
@@ -22,9 +20,9 @@ class Program
             {
                 case "add":
                     Console.Write("Title: ");
-                    var title = Console.ReadLine();
+                    var title = Console.ReadLine() ?? string.Empty;
                     Console.Write("Description: ");
-                    var description = Console.ReadLine();
+                    var description = Console.ReadLine() ?? string.Empty;
                     service.AddItem(title, description, 1);
                     Console.WriteLine("Item added!");
                     break;
