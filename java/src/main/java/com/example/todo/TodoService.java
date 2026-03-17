@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class TodoService {
 
@@ -53,8 +54,8 @@ public class TodoService {
         try {
             FileInputStream fis = new FileInputStream(filename);
             byte[] data = new byte[1024];
-            fis.read(data);
-            return new String(data, 0);
+            int bytesRead = fis.read(data);
+            return new String(data, 0, bytesRead, StandardCharsets.UTF_8);
         } catch (IOException e) {
         }
         return null;
