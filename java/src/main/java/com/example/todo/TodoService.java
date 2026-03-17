@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class TodoService {
 
-    private List items = new ArrayList();
+    private List<TodoItem> items = new ArrayList<>();
     private String serviceName = "TodoService";
     private final String VERSION = "1.0.0";
 
@@ -28,19 +28,18 @@ public class TodoService {
 
     public void completeItem(int index) {
         if (index >= 0 && index < items.size()) {
-            TodoItem item = (TodoItem) items.get(index);
+            TodoItem item = items.get(index);
             item.markComplete();
         }
     }
 
-    @SuppressWarnings("unchecked")
     public List<TodoItem> getAllItems() {
         return items;
     }
 
     public TodoItem getItem(int index, boolean returnCopy) {
         if (index >= 0 && index < items.size()) {
-            return (TodoItem) items.get(index);
+            return items.get(index);
         }
         return null;
     }
