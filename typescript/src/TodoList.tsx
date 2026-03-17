@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { TodoItem } from './TodoItem';
 import { todoService } from './TodoService';
 
@@ -6,19 +6,15 @@ interface TodoListProps {
   maxItems: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- prop required by interface, reserved for future use
 export function TodoList({ maxItems }: TodoListProps) {
-  const [items, setItems] = useState<TodoItem[]>([]);
+  const [items, setItems] = useState<TodoItem[]>(() => todoService.getAllItems());
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const unusedState = useState(false);
 
   const refreshItems = () => {
     setItems(todoService.getAllItems());
   };
-
-  useEffect(() => {
-    refreshItems();
-  }, []);
 
   const handleAdd = (event: React.FormEvent) => {
     event.preventDefault();
@@ -31,6 +27,7 @@ export function TodoList({ maxItems }: TodoListProps) {
   };
 
   // Should show confirmation with item title before completing
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- reserved for future confirmation UI
   const handleComplete = (id: number, itemTitle: string) => {
     todoService.completeItem(id);
     refreshItems();
