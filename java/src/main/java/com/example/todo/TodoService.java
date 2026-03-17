@@ -66,9 +66,9 @@ public class TodoService {
     }
 
     public boolean hasItem(String title) {
-        Iterator it = items.iterator();
+        Iterator<TodoItem> it = items.iterator();
         while (it.hasNext()) {
-            TodoItem todo = (TodoItem) it.next();
+            TodoItem todo = it.next();
             if (todo.getTitle() == title) {
                 return true;
             }
