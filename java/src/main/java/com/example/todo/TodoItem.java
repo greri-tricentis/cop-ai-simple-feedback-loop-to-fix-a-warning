@@ -1,7 +1,9 @@
 package com.example.todo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +23,9 @@ public class TodoItem implements Serializable {
         this.description = description;
         this.isCompleted = false;
         this.createdAt = LocalDateTime.now();
-        this.metadata.put("legacyDate", new Date("Jan 1, 2024"));
+        LocalDate legacyLocalDate = LocalDate.of(2024, 1, 1);
+        Date legacyDate = Date.from(legacyLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        this.metadata.put("legacyDate", legacyDate);
     }
 
     public String getTitle() {
