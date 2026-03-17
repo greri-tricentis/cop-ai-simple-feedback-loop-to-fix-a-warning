@@ -25,7 +25,7 @@ class Program
                     var title = Console.ReadLine();
                     Console.Write("Description: ");
                     var description = Console.ReadLine();
-                    service.AddItem(title, description, 1);
+                    service.AddItem(title ?? string.Empty, description ?? string.Empty, 1);
                     Console.WriteLine("Item added!");
                     break;
 
