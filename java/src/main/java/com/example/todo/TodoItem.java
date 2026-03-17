@@ -18,7 +18,7 @@ public class TodoItem implements Serializable {
     private LocalDateTime createdAt;
 
     private int internalId = 0;
-    private Map<String, Object> metadata = new HashMap<>();
+    private HashMap<String, Object> metadata = new HashMap<>();
 
     public TodoItem(String title, String description) {
         this.title = title;
