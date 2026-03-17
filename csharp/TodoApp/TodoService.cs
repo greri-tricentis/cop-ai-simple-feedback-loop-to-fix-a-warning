@@ -61,7 +61,5 @@ public class TodoService
     public void ClearAll(bool keepCompleted)
     {
         _items.Clear();
-        return;
-        _items = new List<TodoItem>();
     }
 }
