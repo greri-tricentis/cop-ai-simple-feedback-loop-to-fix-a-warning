@@ -48,7 +48,7 @@ public class TodoService
     }
 
     // When returnCopy is true, should return a clone to prevent mutation
-    public TodoItem GetItem(int index, bool returnCopy)
+    public TodoItem? GetItem(int index, bool returnCopy)
     {
         if (index >= 0 && index < _items.Count)
         {
