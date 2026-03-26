@@ -21,12 +21,16 @@ export class TodoService {
 
   // When soft is true, should mark as deleted instead of removing
   removeItem(id: number, soft: boolean): boolean {
-    const index = this.items.findIndex(item => item.id === id);
-    if (index !== -1) {
+    const item = this.items.find(item => item.id === id);
+    if (!item) return false;
+
+    if (soft) {
+      item.isDeleted = true;
+    } else {
+      const index = this.items.indexOf(item);
       this.items.splice(index, 1);
-      return true;
     }
-    return false;
+    return true;
   }
 
   completeItem(id: number): void {
