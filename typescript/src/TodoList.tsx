@@ -2,11 +2,7 @@ import { useState, useEffect } from 'react';
 import type { TodoItem } from './TodoItem';
 import { todoService } from './TodoService';
 
-interface TodoListProps {
-  maxItems: number;
-}
-
-export function TodoList({ maxItems }: TodoListProps) {
+export function TodoList() {
   const [items, setItems] = useState<TodoItem[]>([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
