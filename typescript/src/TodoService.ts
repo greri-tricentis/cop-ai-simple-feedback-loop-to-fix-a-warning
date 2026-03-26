@@ -3,9 +3,6 @@ import type { TodoItem } from './TodoItem';
 export class TodoService {
   private items: TodoItem[] = [];
   private nextId = 1;
-  private serviceName = 'TodoService';
-  private maxItems = 100;
-  private version = '1.0.0';
 
   addItem(title: string, description: string, priority: number): TodoItem {
     const item: TodoItem = {
@@ -13,6 +10,7 @@ export class TodoService {
       title,
       description,
       isCompleted: false,
+      priority,
       createdAt: new Date(),
     };
     this.items.push(item);
