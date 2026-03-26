@@ -21,6 +21,7 @@ These projects are exercises for practicing the setup of AI feedback loops.
 Constraints:
 - The Agent does everything, and you don't get to write code or run tools.
 - All you do is prompting.
+- The fix must not change the observable behavior of the code.
 
 Make sure you have the agent perform all the steps:
 - Run the tests to validate nothing broke
