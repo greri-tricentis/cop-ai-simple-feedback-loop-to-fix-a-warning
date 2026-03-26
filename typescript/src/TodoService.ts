@@ -12,6 +12,7 @@ export class TodoService {
       id: this.nextId++,
       title,
       description,
+      priority,
       isCompleted: false,
       createdAt: new Date(),
     };
