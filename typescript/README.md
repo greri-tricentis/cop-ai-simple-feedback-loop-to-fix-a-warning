@@ -13,6 +13,7 @@ A simple TypeScript todo application for practicing AI feedback loops. Practice 
 Constraints:
 - The Agent does everything, and you don't get to write code or run tools.
 - All you do is prompting.
+- The fix must not change the observable behavior of the code.
 
 Make sure you have the agent perform all the steps:
 - Run the tests to validate nothing broke
