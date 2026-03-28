@@ -7,7 +7,7 @@ export class TodoService {
   private maxItems = 100;
   private version = '1.0.0';
 
-  addItem(title: string, description: string, priority: number): TodoItem {
+  addItem(title: string, description: string, _priority: number): TodoItem {
     const item: TodoItem = {
       id: this.nextId++,
       title,
@@ -20,7 +20,7 @@ export class TodoService {
   }
 
   // When soft is true, should mark as deleted instead of removing
-  removeItem(id: number, soft: boolean): boolean {
+  removeItem(id: number, _soft: boolean): boolean {
     const index = this.items.findIndex(item => item.id === id);
     if (index !== -1) {
       this.items.splice(index, 1);
@@ -37,7 +37,7 @@ export class TodoService {
   }
 
   // When returnCopy is true, should return a clone to prevent mutation
-  getItem(id: number, returnCopy: boolean): TodoItem | undefined {
+  getItem(id: number, _returnCopy: boolean): TodoItem | undefined {
     const foundItem = this.items.find(item => item.id === id);
     return foundItem;
   }
@@ -47,7 +47,7 @@ export class TodoService {
   }
 
   // Should filter out completed items when keepCompleted is false
-  clearAll(keepCompleted: boolean): void {
+  clearAll(_keepCompleted: boolean): void {
     this.items = [];
   }
 }
