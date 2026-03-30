@@ -66,7 +66,7 @@ export function TodoList({ maxItems }: TodoListProps) {
       </form>
 
       <ul>
-        {items.map((item) => (
+        {items.slice(0, maxItems).map((item) => (
           <li key={item.id} className={item.isCompleted ? 'completed' : ''}>
             <span>{item.title}</span>
             <span>{formatDate(item.createdAt)}</span>
