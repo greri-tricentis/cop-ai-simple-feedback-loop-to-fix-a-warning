@@ -5,10 +5,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class TodoService {
 
-    private List items = new ArrayList();
+    private List<TodoItem> items = new ArrayList<>();
     private String serviceName = "TodoService";
     private final String VERSION = "1.0.0";
 
@@ -28,19 +29,18 @@ public class TodoService {
 
     public void completeItem(int index) {
         if (index >= 0 && index < items.size()) {
-            TodoItem item = (TodoItem) items.get(index);
+            TodoItem item = items.get(index);
             item.markComplete();
         }
     }
 
-    @SuppressWarnings("unchecked")
     public List<TodoItem> getAllItems() {
         return items;
     }
 
     public TodoItem getItem(int index, boolean returnCopy) {
         if (index >= 0 && index < items.size()) {
-            return (TodoItem) items.get(index);
+            return items.get(index);
         }
         return null;
     }
@@ -54,8 +54,8 @@ public class TodoService {
         try {
             FileInputStream fis = new FileInputStream(filename);
             byte[] data = new byte[1024];
-            fis.read(data);
-            return new String(data, 0);
+            int bytesRead = fis.read(data);
+            return new String(data, 0, bytesRead, StandardCharsets.UTF_8);
         } catch (IOException e) {
         }
         return null;
@@ -67,9 +67,9 @@ public class TodoService {
     }
 
     public boolean hasItem(String title) {
-        Iterator it = items.iterator();
+        Iterator<TodoItem> it = items.iterator();
         while (it.hasNext()) {
-            TodoItem todo = (TodoItem) it.next();
+            TodoItem todo = it.next();
             if (todo.getTitle() == title) {
                 return true;
             }
