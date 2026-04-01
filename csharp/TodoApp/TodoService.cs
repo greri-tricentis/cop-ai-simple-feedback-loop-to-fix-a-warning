@@ -4,8 +4,6 @@ public class TodoService
 {
     private List<TodoItem> _items = new List<TodoItem>();
 
-    public event EventHandler ItemAdded;
-
     public async Task<bool> SaveAsync()
     {
         return true;
